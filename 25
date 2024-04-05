@@ -1,0 +1,5 @@
+select distinct maker
+from Product 
+where model in (select model from PC where ram = (select MIN(ram) from PC) 
+and speed = (select MAX(speed) from PC where ram = (select min(ram) from PC)) 
+and maker in (select maker from Product where type = 'Printer'))
