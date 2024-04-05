@@ -1,0 +1,10 @@
+select avg(price)
+from (Select price 
+from PC 
+join Product pr on PC.model = pr.model 
+where maker = 'A' 
+union all
+select price 
+from laptop 
+join Product pr on laptop.model = pr.model 
+where maker = 'A') t
